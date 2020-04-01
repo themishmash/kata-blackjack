@@ -1,3 +1,4 @@
+using System.Linq;
 using blackjack;
 using NUnit.Framework;
 
@@ -14,14 +15,22 @@ namespace blackjackTests
         }
 
         [Test]
-        public void NumberOfCardsInDeckTest()
+        public void Deck_StartsWith52Cards()
         {
             Deck deck = new Deck();
-            var cardList = deck.CreateDeck();
-          
-            Assert.AreEqual(52, cardList.Count);
-            
+            Assert.AreEqual(52, deck.NumberOfCards());
         }
+
+        [Test]
+         public void Deck_deckContainsSpecificCards()
+         {
+             Deck deck = new Deck();
+            
+             
+             Assert.AreEqual(1,deck._cardList.Count(c=>c.Value == 1 && c.Suit == Card.Suits.Clubs));
+         }
+        
+        
         
         
         
