@@ -1,0 +1,4 @@
+/Users/michelle.wong/FMA/kata-blackjack/blackjackTests/obj/Debug/netcoreapp3.1/blackjackTests.csprojAssemblyReference.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjackTests/obj/Debug/netcoreapp3.1/blackjackTests.csproj.CoreCompileInputs.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjackTests/obj/Debug/netcoreapp3.1/blackjackTests.AssemblyInfoInputs.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjackTests/obj/Debug/netcoreapp3.1/blackjackTests.AssemblyInfo.cs

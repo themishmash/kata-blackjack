@@ -1,0 +1,12 @@
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/bin/Debug/netcoreapp3.1/blackjack-solution.deps.json
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/bin/Debug/netcoreapp3.1/blackjack-solution.runtimeconfig.json
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/bin/Debug/netcoreapp3.1/blackjack-solution.runtimeconfig.dev.json
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/bin/Debug/netcoreapp3.1/blackjack-solution.dll
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/bin/Debug/netcoreapp3.1/blackjack-solution.pdb
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.csprojAssemblyReference.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.csproj.CoreCompileInputs.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.AssemblyInfoInputs.cache
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.AssemblyInfo.cs
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.dll
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.pdb
+/Users/michelle.wong/FMA/kata-blackjack/blackjack-solution/obj/Debug/netcoreapp3.1/blackjack-solution.genruntimeconfig.cache
