@@ -1,39 +1,21 @@
-using System;
-using System.Collections.Generic;
-
 namespace blackjack
 {
     public class Card
     {
+        public CardFace CardFace;
+        public Suit Suit;
+        public int Value;
 
 
-
-
-        //value numerical
-      //public int Value;
-      public CardFace CardFace;
-      public Suit Suit;
-      public int Value;
-      
-      
-
-      public Card(CardFace cardFace, Suit suit)
-      {
-          CardFace = cardFace;
-          Suit = suit;
-          Value = (int)cardFace + 1;
-          if (Value > 10)
-          {
-              Value = 10;
-          }
-
-      }
-      
-      
-
-      
+        public Card(CardFace cardFace, Suit suit)
+        {
+            CardFace = cardFace;
+            Suit = suit;
+            Value = (int) cardFace + 1;
+            if (Value > 10) Value = 10;
+        }
     }
-    
+
     public enum CardFace
     {
         Ace,
@@ -50,7 +32,7 @@ namespace blackjack
         Queen,
         King
     }
-    
+
     public enum Suit
     {
         Clubs,
@@ -58,6 +40,4 @@ namespace blackjack
         Hearts,
         Spades
     }
-
-    
 }
