@@ -5,94 +5,59 @@ namespace blackjack
 {
     public class Card
     {
-      
 
-      public enum Suits
-      {
-          Clubs,
-          Diamonds,
-          Hearts,
-          Spades
-      }
-      //value numerical
+
+
+
+        //value numerical
+      //public int Value;
+      public CardFace CardFace;
+      public Suit Suit;
       public int Value;
-      public Suits Suit;
       
-      public string NamedValue
-      {
-          get
-          {
-              string [] valueString = {string.Empty};
-              
-              //string suitSentence = string.Empty;
-              switch (Value)
-              {
-                  case 10:
-                      valueString = new []{"Jack", "Queen", "King"};
-                      break;
-                  default:
-                      valueString = new [] {Value.ToString()};
-                      break;
-              }
+      
 
-              return valueString.ToString();
-          }
-      }
-
-      public string Name
+      public Card(CardFace cardFace, Suit suit)
       {
-          get
-          {
-              return NamedValue + " of " + Suit.ToString();
-          }
-      }
-
-      public Card(int value, Suits suit)
-      {
-          Value = value;
+          CardFace = cardFace;
           Suit = suit;
+          Value = (int)cardFace + 1;
+          if (Value > 10)
+          {
+              Value = 10;
+          }
 
       }
-
+      
       
 
       
-
-      // public Card(string input)
-      // {
-      //     string [] valueString = {string.Empty};
-      //     
-      //     string suitSentence = string.Empty;
-      //
-      //     switch (Value)
-      //     {
-      //         case 10:
-      //             valueString = new []{"Jack", "Queen", "King"};
-      //             break;
-      //         default:
-      //             valueString = new [] {Value.ToString()};
-      //             break;
-      //     }
-      //
-      //     switch (Suit)
-      //     {
-      //         case Suits.Clubs:
-      //             suitSentence = " of Clubs";
-      //             break;
-      //         case Suits.Diamonds:
-      //             suitSentence = " of Diamonds";
-      //             break;
-      //         case Suits.Hearts:
-      //             suitSentence = " of Hearts";
-      //             break;
-      //         case Suits.Spades:
-      //             suitSentence = " of Spades";
-      //             break;
-      //     }
-      //
-      //     input = valueString + suitSentence;
-      // }
-      
-      //constructor to create individual card with 
     }
+    
+    public enum CardFace
+    {
+        Ace,
+        Two,
+        Three,
+        Four,
+        Five,
+        Six,
+        Seven,
+        Eight,
+        Nine,
+        Ten,
+        Jack,
+        Queen,
+        King
+    }
+    
+    public enum Suit
+    {
+        Clubs,
+        Diamonds,
+        Hearts,
+        Spades
+    }
+
+    
 }

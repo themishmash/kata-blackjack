@@ -9,6 +9,7 @@ namespace blackjack
             Console.WriteLine("Hello World!");
             Deck deck = new Deck();
             deck.CreateDeck();
+            deck.PrintDeck();
         }
     }
 }

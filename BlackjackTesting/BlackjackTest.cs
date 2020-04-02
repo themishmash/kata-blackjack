@@ -27,7 +27,8 @@ namespace blackjackTests
              Deck deck = new Deck();
             
              
-             Assert.AreEqual(1,deck._cardList.Count(c=>c.Value == 1 && c.Suit == Card.Suits.Clubs));
+             // Assert.AreEqual(1,deck._cardList.Count(c=>c.Value == 1 && c.Suit == Card.Suits.Clubs));
+             Assert.AreEqual(1,deck._cardList.Count(c=>c.CardFace == CardFace.Ace && c.Suit == Suit.Clubs));
          }
         
         
