@@ -2,12 +2,12 @@
 
 namespace blackjack
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            Deck deck = new Deck();
+            var deck = new Deck();
             deck.CreateDeck();
             deck.PrintDeck();
         }
