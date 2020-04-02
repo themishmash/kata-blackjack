@@ -24,42 +24,20 @@ namespace blackjack
 
         public void PrintDeck()
         {
-            // for (int i = 0; i < 52; i++)
-            // { 
-            //     Console.WriteLine($"{_cardList[i].Value} {_cardList[i].Suit}");
-            // }
-            //
-            // return "hello";
-
-
-            // foreach (var suit in Enum.GetNames(typeof(Card.Suits)))
-            // foreach (Card card in _cardList)
-            // {
-            //    
-            //     Console.WriteLine($"{card.Value} of {suit}");
-            // }
-
-
-            //This prints out all cards based on enums not cardlist
-
-            // foreach (var suit in Enum.GetNames(typeof(Card.Suits)))
-            //     foreach (var value in Enum.GetNames(typeof(Card.Values)))
-            //
-            // {
-            //    
-            //  
-            //     Console.WriteLine($"{value} of {suit}");
-            // }
+            foreach (var card in _cardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
         }
 
         public int NumberOfCards()
         {
             return _cardList.Count;
         }
-        
+
         private void AddCardsForSuit(Suit suit)
         {
-            foreach (CardFace cardFace in Enum.GetValues(typeof(CardFace))) _cardList.Add(new Card(cardFace, suit));
+            foreach (CardFace cardFace in Enum.GetValues(typeof(CardFace)))
+            {
+                _cardList.Add(new Card(cardFace, suit));
+            }
         }
     }
 }
