@@ -8,8 +8,65 @@ namespace blackjack
         {
             Console.WriteLine("Hello World!");
             var deck = new Deck();
-            deck.CreateDeck();
+            //deck.CreateDeck();
+            //deck.PrintDeck();
+           
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            // deck.DrawOneCardFromDeck();
+            //deck.DrawOneCardFromDeck();
+            Console.WriteLine(deck.NumberOfCards());
+            
             deck.PrintDeck();
+            
         }
     }
 }
