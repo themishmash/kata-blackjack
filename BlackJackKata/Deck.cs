@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace blackjack
 {
-    public class Deck
+    public class Deck : IDeck
     {
         private static readonly Random rng = new Random(); //This is to do with shuffle cards
         public readonly List<Card> CardList = new List<Card>();
@@ -19,9 +19,7 @@ namespace blackjack
 
         {
             AddCardsForSuit();
-            // AddCardsForSuit(Suit.Diamonds);
-            // AddCardsForSuit(Suit.Hearts);
-            // AddCardsForSuit(Suit.Spades);
+           
         }
 
         public void ShuffleCards()
