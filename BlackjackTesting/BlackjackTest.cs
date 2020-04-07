@@ -66,7 +66,7 @@ namespace blackjackTests
         }
 
         [Test]
-        public void Dealer_dealOneCardAndShowHand()
+        public void Dealer_dealOneCardAndCheckNumberOfCardsInHand()
         {
             var deck = new Deck();
             var dealer = new Dealer();
@@ -76,13 +76,28 @@ namespace blackjackTests
         }
         
         [Test]
-        public void Human_dealOneCardAndShowHand()
+        public void Human_dealOneCardAndCheckNumberOfCardsInHand()
         {
             var deck = new Deck();
-            var human = new Human();
-            human.AddOneCardToHumanHand(deck);
+            var human = new Human(deck);
+            human.AddOneCardToHand();
   
             Assert.AreEqual(1, human.NumberOfHumanCards());
+        }
+
+        [Test]
+        public void Human_scoreOfCards() //trying to check score of hand
+        {
+            //Given
+            var testDeck = new TestDeck();
+            var human = new Human(testDeck);
+            
+            //When
+            human.AddOneCardToHand();
+            human.AddOneCardToHand();
+
+            //Then
+            Assert.AreEqual(16, human.CardTotalValue());
         }
         
     }

@@ -65,12 +65,14 @@ namespace blackjack
             //deck.DrawOneCardFromDeck();
             //Console.WriteLine(deck.NumberOfCards());
 
-            //deck.PrintDeck();
+            deck.PrintDeck();
 
             var dealer = new Dealer();
             dealer.AddOneCardToDealerHand(deck);
             dealer.PrintDealerHand();
             Console.WriteLine(dealer.NumberOfDealerCards());
+            // var card = new Card();
+            Console.WriteLine(dealer.CardTotalValue());
             
         }
     }
