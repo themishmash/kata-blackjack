@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace blackjack
+namespace kata_blackjack
 {
     internal class Program
     {
@@ -67,12 +67,20 @@ namespace blackjack
 
             deck.PrintDeck();
 
-            var dealer = new Dealer();
-            dealer.AddOneCardToDealerHand(deck);
-            dealer.PrintDealerHand();
-            Console.WriteLine(dealer.NumberOfDealerCards());
+            // var dealer = new Dealer();
+            // dealer.AddOneCardToDealerHand(deck);
+            // dealer.PrintDealerHand();
+           // Console.WriteLine(dealer.NumberOfDealerCards());
             // var card = new Card();
-            Console.WriteLine(dealer.CardTotalValue());
+            //Console.WriteLine(dealer.CardTotalValue());
+            
+            //Testing after splitting into parent and child
+            var human = new Human(deck);
+            human.AddOneCardToHand();
+            human.AddOneCardToHand();
+            Console.WriteLine(human.NumberOfPlayerCards());
+            human.PrintPlayerHand();
+            
             
         }
     }
