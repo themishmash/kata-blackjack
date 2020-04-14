@@ -1,4 +1,4 @@
-namespace blackjack
+namespace kata_blackjack
 {
     public enum CardFace
     {

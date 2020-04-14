@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace blackjack
+namespace kata_blackjack
 {
     public class Deck : IDeck
     {
-        private static readonly Random rng = new Random(); //This is to do with shuffle cards
+        private static readonly Random Rng = new Random(); //This is to do with shuffle cards
         public readonly List<Card> CardList = new List<Card>();
 
 
@@ -15,20 +15,20 @@ namespace blackjack
             ShuffleCards();
         }
 
-        public void CreateDeck()
+        private void CreateDeck()
 
         {
             AddCardsForSuit();
            
         }
 
-        public void ShuffleCards()
+        private void ShuffleCards()
         {
             var n = CardList.Count;
             while (n > 1)
             {
                 n--;
-                var k = rng.Next(n + 1);
+                var k = Rng.Next(n + 1);
                 var value = CardList[k];
                 CardList[k] = CardList[n];
                 CardList[n] = value;
@@ -64,6 +64,9 @@ namespace blackjack
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             foreach (CardFace cardFace in Enum.GetValues(typeof(CardFace)))
                 CardList.Add(new Card(cardFace, suit));
+
+            
+            
         }
     }
 }

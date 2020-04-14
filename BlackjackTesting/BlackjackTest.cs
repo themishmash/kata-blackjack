@@ -1,5 +1,5 @@
 using System.Linq;
-using blackjack;
+using kata_blackjack;
 using NUnit.Framework;
 
 namespace blackjackTests
@@ -69,10 +69,10 @@ namespace blackjackTests
         public void Dealer_dealOneCardAndCheckNumberOfCardsInHand()
         {
             var deck = new Deck();
-            var dealer = new Dealer();
-            dealer.AddOneCardToDealerHand(deck);
+            var dealer = new Dealer(deck);
+            dealer.AddOneCardToHand();
   
-            Assert.AreEqual(1, dealer.NumberOfDealerCards());
+            Assert.AreEqual(1, dealer.NumberOfPlayerCards());
         }
         
         [Test]
@@ -82,7 +82,7 @@ namespace blackjackTests
             var human = new Human(deck);
             human.AddOneCardToHand();
   
-            Assert.AreEqual(1, human.NumberOfHumanCards());
+            Assert.AreEqual(1, human.NumberOfPlayerCards());
         }
 
         [Test]

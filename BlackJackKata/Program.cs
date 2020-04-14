@@ -1,79 +1,58 @@
 ﻿using System;
 
-namespace blackjack
+namespace kata_blackjack
 {
     internal class Program
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
             var deck = new Deck();
+            var dealer = new Dealer(deck);
+            var human = new Human(deck);
+            
+            var blackJack = new BlackJack(dealer, human, deck);
+           
             //deck.CreateDeck();
             //deck.PrintDeck();
-
-
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
+            
             // deck.DrawOneCardFromDeck();
             // deck.DrawOneCardFromDeck();
             // deck.DrawOneCardFromDeck();
             //deck.DrawOneCardFromDeck();
             //Console.WriteLine(deck.NumberOfCards());
 
-            deck.PrintDeck();
+            //deck.PrintDeck();
 
-            var dealer = new Dealer();
-            dealer.AddOneCardToDealerHand(deck);
-            dealer.PrintDealerHand();
-            Console.WriteLine(dealer.NumberOfDealerCards());
+           
+            // dealer.AddOneCardToDealerHand(deck);
+            // dealer.PrintDealerHand();
+           // Console.WriteLine(dealer.NumberOfDealerCards());
             // var card = new Card();
-            Console.WriteLine(dealer.CardTotalValue());
+            //Console.WriteLine(dealer.CardTotalValue());
             
+            //Testing after splitting into parent and child
+         
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // Console.WriteLine(human.NumberOfPlayerCards());
+            // human.PrintPlayerHand();
+            
+            
+            
+            blackJack.StartGame();
+            
+            blackJack.HitCardDealer();
+            blackJack.HitCardDealer();
+            blackJack.HitCardDealer();
+            dealer.PrintPlayerHand();
+            
+            
+
+          
+
         }
     }
 }
