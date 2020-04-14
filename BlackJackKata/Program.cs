@@ -6,8 +6,13 @@ namespace kata_blackjack
     {
         private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
             var deck = new Deck();
+            var dealer = new Dealer(deck);
+            var human = new Human(deck);
+            
+            var blackJack = new BlackJack(dealer, human, deck);
+           
             //deck.CreateDeck();
             //deck.PrintDeck();
             
@@ -17,9 +22,9 @@ namespace kata_blackjack
             //deck.DrawOneCardFromDeck();
             //Console.WriteLine(deck.NumberOfCards());
 
-            deck.PrintDeck();
+            //deck.PrintDeck();
 
-            // var dealer = new Dealer();
+           
             // dealer.AddOneCardToDealerHand(deck);
             // dealer.PrintDealerHand();
            // Console.WriteLine(dealer.NumberOfDealerCards());
@@ -27,13 +32,27 @@ namespace kata_blackjack
             //Console.WriteLine(dealer.CardTotalValue());
             
             //Testing after splitting into parent and child
-            var human = new Human(deck);
-            human.AddOneCardToHand();
-            human.AddOneCardToHand();
-            Console.WriteLine(human.NumberOfPlayerCards());
-            human.PrintPlayerHand();
+         
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // human.AddOneCardToHand();
+            // Console.WriteLine(human.NumberOfPlayerCards());
+            // human.PrintPlayerHand();
             
             
+            
+            blackJack.StartGame();
+            
+            blackJack.HitCardDealer();
+            blackJack.HitCardDealer();
+            blackJack.HitCardDealer();
+            dealer.PrintPlayerHand();
+            
+            
+
+          
+
         }
     }
 }

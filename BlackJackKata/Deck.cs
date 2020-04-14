@@ -64,6 +64,9 @@ namespace kata_blackjack
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             foreach (CardFace cardFace in Enum.GetValues(typeof(CardFace)))
                 CardList.Add(new Card(cardFace, suit));
+
+            
+            
         }
     }
 }

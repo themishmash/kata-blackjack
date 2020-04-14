@@ -11,5 +11,7 @@ namespace blackjackTests
         {
             return new Card(CardFace.Eight, Suit.Diamonds);
         }
+        
+        
     }
 }

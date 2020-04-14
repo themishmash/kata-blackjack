@@ -7,8 +7,8 @@ namespace kata_blackjack
     public class Player
     {
 
-        public readonly ICollection<Card> PlayerHand = new List<Card>(); 
-        private readonly IDeck _deck;
+        public readonly ICollection<Card> PlayerHand = new List<Card>(); //playerhnad property can be antyhign that conforms ot collection interface. And collection has to be collection of cards
+        private readonly IDeck _deck; 
 
         public Player(IDeck deck) 
         {
