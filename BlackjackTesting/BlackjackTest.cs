@@ -15,7 +15,7 @@ namespace blackjackTests
         public void Deck_StartsWith52Cards()
         {
             var deck = new Deck();
-            Assert.AreEqual(52, deck.NumberOfCards());
+            Assert.AreEqual(52, deck.TotalNumberOfCardsInCardList());
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace blackjackTests
             
             var cardDrawn = deck.DrawOneCardFromDeck();
 
-            Assert.AreEqual(51, deck.NumberOfCards());
+            Assert.AreEqual(51, deck.TotalNumberOfCardsInCardList());
             Assert.IsFalse(deck.CardList.Contains(cardDrawn)); //Windy helped with this
         }
 
@@ -72,7 +72,7 @@ namespace blackjackTests
             var dealer = new Dealer(deck);
             dealer.AddOneCardToHand();
   
-            Assert.AreEqual(1, dealer.NumberOfPlayerCards());
+            Assert.AreEqual(1, dealer.TotalNumberOfCardsInPlayerHand());
         }
         
         [Test]
@@ -82,14 +82,19 @@ namespace blackjackTests
             var human = new Human(deck);
             human.AddOneCardToHand();
   
-            Assert.AreEqual(1, human.NumberOfPlayerCards());
+            Assert.AreEqual(1, human.TotalNumberOfCardsInPlayerHand());
         }
 
         [Test]
         public void Human_scoreOfCards() //trying to check score of hand
         {
             //Given
-            var testDeck = new TestDeck();
+            var testDeck = new TestDeck((new []
+            {
+                new Card(CardFace.Eight, Suit.Clubs), 
+                new Card(CardFace.Eight, Suit.Diamonds)
+                
+            }));
             var human = new Human(testDeck);
             
             //When
@@ -98,6 +103,40 @@ namespace blackjackTests
 
             //Then
             Assert.AreEqual(16, human.CardTotalValue());
+        }
+
+        [Test]
+        public void BlackJack_hitCardCheckTotalNumberOfCardsInDealerHand()
+        {
+            var deck = new Deck();
+            var human = new Human(deck);
+            var dealer = new Dealer(deck);
+            var blackjack = new BlackJack(dealer, human);
+            
+           // blackjack.StartGame();
+            blackjack.HitCard(dealer);
+            
+            Assert.AreEqual(1, dealer.TotalNumberOfCardsInPlayerHand());
+        }
+        
+        [Test]
+        public void BlackJack_dealerHitCardToValue17()
+        {
+            var testDeck = new TestDeck(new []
+            {
+                new Card(CardFace.Queen, Suit.Clubs), 
+                new Card(CardFace.Seven, Suit.Diamonds)
+                
+            });
+            var human = new Human(testDeck);
+            var dealer = new Dealer(testDeck);
+            var blackjack = new BlackJack(dealer, human);
+            
+            blackjack.HitCard(dealer);
+            blackjack.HitCard(dealer);
+            //blackjack.HitCard(dealer);
+            
+            Assert.AreEqual(17, dealer.CardTotalValue());
         }
         
     }

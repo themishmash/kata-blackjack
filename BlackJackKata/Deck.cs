@@ -40,7 +40,7 @@ namespace kata_blackjack
             foreach (var card in CardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
         }
 
-        public int NumberOfCards()
+        public int TotalNumberOfCardsInCardList()
         {
             return CardList.Count;
         }

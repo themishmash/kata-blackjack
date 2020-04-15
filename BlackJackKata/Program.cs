@@ -11,7 +11,7 @@ namespace kata_blackjack
             var dealer = new Dealer(deck);
             var human = new Human(deck);
             
-            var blackJack = new BlackJack(dealer, human, deck);
+            var blackJack = new BlackJack(dealer, human);
            
             //deck.CreateDeck();
             //deck.PrintDeck();
@@ -43,16 +43,24 @@ namespace kata_blackjack
             
             
             blackJack.StartGame();
-            
-            blackJack.HitCardDealer();
-            blackJack.HitCardDealer();
-            blackJack.HitCardDealer();
-            dealer.PrintPlayerHand();
-            
-            
-
+            //dealer.PrintPlayerHand();
+            //human.PrintPlayerHand();
+            blackJack.HitCard(dealer);
+            blackJack.HitCard(dealer);
+            blackJack.HitCard(dealer);
           
+            dealer.PrintPlayerHand();
+            Console.WriteLine(dealer.CardTotalValue());
+
+            if (blackJack.IsBust())
+            {
+                Console.WriteLine("you are busted");
+            }
+           
+            
+            
 
         }
+        
     }
 }

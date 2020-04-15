@@ -7,13 +7,18 @@ namespace kata_blackjack
     public class Player
     {
 
-        public readonly ICollection<Card> PlayerHand = new List<Card>(); //playerhnad property can be antyhign that conforms ot collection interface. And collection has to be collection of cards
-        private readonly IDeck _deck; 
+        private readonly ICollection<Card> PlayerHand = new List<Card>(); //playerhnad property can be antyhign that 
+        //conforms ot collection interface. And collection has to be collection of cards
+        private readonly IDeck _deck;
+
+        public virtual int MaxPlayerHandValue { get; }
 
         public Player(IDeck deck) 
         {
             _deck = deck;
         }
+        
+        
         
         public void AddOneCardToHand()
         {
@@ -22,7 +27,7 @@ namespace kata_blackjack
             
         }
         
-        public int NumberOfPlayerCards()
+        public int TotalNumberOfCardsInPlayerHand()
         {
             return PlayerHand.Count;
         }
