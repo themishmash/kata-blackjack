@@ -3,13 +3,24 @@ namespace kata_blackjack
 {
     public class Dealer : Player
     {
-        public override int MaxPlayerHandValue { get; } = 17;
+        protected override int MaxPlayerHandValue { get; } = 17;
 
         public Dealer(IDeck deck) : base(deck)
         {
-            
+            DrawCard();
+            DrawCard();
           
         }
+
+        public override void PlayTurn()
+        {
+            while (HandValue() < MaxPlayerHandValue)
+            {
+                DrawCard();
+            }
+            
+        }
+        
         
         
        

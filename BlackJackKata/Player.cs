@@ -4,45 +4,48 @@ using System.Linq;
 
 namespace kata_blackjack
 {
-    public class Player
+    public abstract class Player
     {
 
-        private readonly ICollection<Card> PlayerHand = new List<Card>(); //playerhnad property can be antyhign that 
+        private readonly ICollection<Card> _hand = new List<Card>(); //playerhand property can be anything that 
         //conforms ot collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
 
-        public virtual int MaxPlayerHandValue { get; }
+        protected virtual int MaxPlayerHandValue { get; } 
 
-        public Player(IDeck deck) 
+        protected Player(IDeck deck) 
         {
             _deck = deck;
         }
         
         
-        
-        public void AddOneCardToHand()
+        public void DrawCard()
         {
-            var playerCard = _deck.DrawOneCardFromDeck();
-            PlayerHand.Add(playerCard);
+            var playerCard = _deck.DrawCard();
+            _hand.Add(playerCard);
             
         }
         
-        public int TotalNumberOfCardsInPlayerHand()
+        
+        public int HandValue()
         {
-            return PlayerHand.Count;
+            
+            return _hand.Sum(card => card.Value);
         }
         
-        public int CardTotalValue()
+
+
+        protected void HitCard()
         {
-            return PlayerHand.Sum(card => card.Value);
-        }
-        
-        public void PrintPlayerHand()
-        {
-            foreach (Card card in PlayerHand)
+
+            if (HandValue() < MaxPlayerHandValue)
             {
-                Console.WriteLine($"{card.CardFace} of {card.Suit}");
+                DrawCard();
             }
+
         }
+
+        public abstract void PlayTurn();
+
     }
 }
