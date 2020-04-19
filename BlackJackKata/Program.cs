@@ -11,6 +11,7 @@ namespace kata_blackjack
             var human = new Human(deck);
             var blackjack = new BlackJack(dealer, human);
             
+            
             blackjack.StartGame();
             Console.WriteLine(human.HandValue());
             Console.WriteLine("Do you want to hit card?");
@@ -26,8 +27,7 @@ namespace kata_blackjack
             }
 
             Console.WriteLine(human.HandValue());
-
-
+            Console.WriteLine(human.PrintPlayerHand());
         }
 
     

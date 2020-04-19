@@ -8,10 +8,10 @@ namespace kata_blackjack
     {
 
         public readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
-        //conforms ot collection interface. And collection has to be collection of cards
+        //conforms to collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
 
-        public string HitCardInput;
+        //public string HitCardInput;
 
         protected virtual int MaxPlayerHandValue { get; } 
 
@@ -34,7 +34,18 @@ namespace kata_blackjack
             
             return Hand.Sum(card => card.Value);
         }
-        
+
+
+        public string PrintPlayerHand()
+        {
+            var returnString = string.Empty;
+            foreach (Card card in Hand)
+            {
+                returnString += card.CardFace.ToString() + " " + card.Suit.ToString() + Environment.NewLine;
+            }
+            
+            return returnString;
+        }
 
 
         // protected void HitCard()

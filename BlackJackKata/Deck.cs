@@ -35,10 +35,10 @@ namespace kata_blackjack
             }
         }
 
-        public void PrintDeck()
-        {
-            foreach (var card in CardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
-        }
+        // public void PrintDeck()
+        // {
+        //     foreach (var card in CardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
+        // }
 
         public int TotalNumberOfCardsInCardList()
         {

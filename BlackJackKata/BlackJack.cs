@@ -18,8 +18,6 @@ namespace kata_blackjack
         }
         public void StartGame()
         {
-            
-            //draw two cards.
             _human.DrawCard();
             _human.DrawCard();
             

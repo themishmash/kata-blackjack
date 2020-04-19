@@ -17,8 +17,7 @@ namespace kata_blackjack
         public override void PlayTurn()
         {
 
-         
-                DrawCard();
+            DrawCard();
 
         }
         
