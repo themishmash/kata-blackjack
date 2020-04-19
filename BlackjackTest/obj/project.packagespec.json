@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/BlackjackTesting.csproj",
-    "projectName": "BlackjackTesting",
-    "projectPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/BlackjackTesting.csproj",
-    "outputPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/obj/",
+    "projectUniqueName": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/BlackjackTest.csproj",
+    "projectName": "BlackjackTest",
+    "projectPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/BlackjackTest.csproj",
+    "outputPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp3.1"

@@ -40,23 +40,21 @@ namespace kata_blackjack
             foreach (var card in CardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
         }
 
-        public int NumberOfCards()
+        public int TotalNumberOfCardsInCardList()
         {
             return CardList.Count;
         }
 
-        public Card DrawOneCardFromDeck()
+        public Card DrawCard()
         {
             if (CardList.Count > 0)
             {
                 var card = CardList[0];
                 CardList.Remove(card);
-                //Console.WriteLine($"{card.CardFace} of {card.Suit}");
                 return card;
             }
 
             return null;
-            //foreach (var card in _cardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
         }
 
         private void AddCardsForSuit()
@@ -64,8 +62,6 @@ namespace kata_blackjack
             foreach (Suit suit in Enum.GetValues(typeof(Suit)))
             foreach (CardFace cardFace in Enum.GetValues(typeof(CardFace)))
                 CardList.Add(new Card(cardFace, suit));
-
-            
             
         }
     }

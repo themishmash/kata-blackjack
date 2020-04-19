@@ -1,84 +1,49 @@
-using System;
+
 
 namespace kata_blackjack
 {
     public class BlackJack
     {
-        //assign properties dealer and human 
-        //get them to draw two cards
+        
+        private readonly Dealer _dealer;
+        private readonly Human _human;
         
         
-        //hit card
-        //make human player stay on 18 for now
-        //have logic dealer stays on 17
-
-        private Dealer _dealer;
-        private Human _human;
-        private IDeck _deck;
-        
-        public BlackJack(Dealer dealer, Human human, IDeck deck)
+        public BlackJack(Dealer dealer, Human human)
         {
-            // var deck = new Deck();
-            // var dealer = new Dealer(deck);
-            // var human = new Human(deck);
+          
             _dealer = dealer;
             _human = human;
-            _deck = deck;
-
 
         }
         public void StartGame()
         {
             
             //draw two cards.
-            _dealer.AddOneCardToHand();
-            _dealer.AddOneCardToHand();
+            _human.DrawCard();
+            _human.DrawCard();
             
-            _human.AddOneCardToHand();
-            _human.AddOneCardToHand();
+            _dealer.DrawCard();
+            _dealer.DrawCard();
 
         }
 
-        public void HitCardDealer()
+
+        public bool IsBust ()
         {
-            if (_dealer.CardTotalValue() < 17)
-            {
-                _dealer.AddOneCardToHand();
-            }
-            else
-            {
-                Console.WriteLine("you can't hit anymore");
-                
-            }
-
-            //Console.WriteLine($"You are on {dealer.CardTotalValue()}");
+            return _human.HandValue() > 21 || _dealer.HandValue() > 21;
         }
-
-        public void HitCardHuman()
-        {
-            if (_human.CardTotalValue() < 18)
-            {
-                _human.AddOneCardToHand();
-            }
-            else
-            {
-                Console.WriteLine("You can't hit anymore");
-            }
-            
-        }
-
-        // public void WinMessage(Player player)
-        // {
-        //     if (player.CardTotalValue() == 21) 
-        //         Console.WriteLine("BlackJack! Well done you have won the game!");
-        //     
-        // }
-
-        // public void BustMessage(Player player)
-        // {
-        //     if (player.CardTotalValue()>21)
-        //         Console.WriteLine("You have bust. You have gone over 21");
-        // }
         
+        // public bool HasWon()
+        public bool HasScore21()
+        {
+            return _human.HandValue() == 21 || _dealer.HandValue() == 21;
+        }
+
+
+        public bool PlayerHasWon()
+        {
+            return _human.HandValue() > _dealer.HandValue() && !IsBust() || HasScore21();
+        }
     }
 }

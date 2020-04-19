@@ -4649,11 +4649,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/BlackjackTesting.csproj",
-      "projectName": "BlackjackTesting",
-      "projectPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/BlackjackTesting.csproj",
+      "projectUniqueName": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/BlackjackTest.csproj",
+      "projectName": "BlackjackTest",
+      "projectPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/BlackjackTest.csproj",
       "packagesPath": "/Users/michelle.wong/.nuget/packages/",
-      "outputPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTesting/obj/",
+      "outputPath": "/Users/michelle.wong/FMA/kata-blackjack/BlackjackTest/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/michelle.wong/.config/NuGet/NuGet.Config"

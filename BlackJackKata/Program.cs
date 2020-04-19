@@ -6,53 +6,47 @@ namespace kata_blackjack
     {
         private static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-            var deck = new Deck();
-            var dealer = new Dealer(deck);
-            var human = new Human(deck);
+
+            // StartGame();
+            // PlayGame();
             
-            var blackJack = new BlackJack(dealer, human, deck);
            
-            //deck.CreateDeck();
-            //deck.PrintDeck();
-            
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            // deck.DrawOneCardFromDeck();
-            //deck.DrawOneCardFromDeck();
-            //Console.WriteLine(deck.NumberOfCards());
-
-            //deck.PrintDeck();
-
-           
-            // dealer.AddOneCardToDealerHand(deck);
-            // dealer.PrintDealerHand();
-           // Console.WriteLine(dealer.NumberOfDealerCards());
-            // var card = new Card();
-            //Console.WriteLine(dealer.CardTotalValue());
-            
-            //Testing after splitting into parent and child
-         
-            // human.AddOneCardToHand();
-            // human.AddOneCardToHand();
-            // human.AddOneCardToHand();
-            // human.AddOneCardToHand();
-            // Console.WriteLine(human.NumberOfPlayerCards());
-            // human.PrintPlayerHand();
-            
-            
-            
-            blackJack.StartGame();
-            
-            blackJack.HitCardDealer();
-            blackJack.HitCardDealer();
-            blackJack.HitCardDealer();
-            dealer.PrintPlayerHand();
-            
-            
-
-          
-
+    
         }
+
+    //     public static bool StartGame()
+    //     {
+    //         Console.WriteLine("Welcome to BlackJack");
+    //         Console.WriteLine("Would you like to play a game?Y/N");
+    //         string yesOrNo = Console.ReadLine().ToUpper();
+    //         if (yesOrNo == "Y")
+    //         {
+    //             return true;
+    //         }
+    //         // Console.WriteLine("Hit or Stay? (Hit = 1, Stay = 0)");
+    //         // string hitOrStayInput = Console.ReadLine();
+    //         // //int hitOrStay = Convert.ToInt32(hitOrStayInput);
+    //         //
+    //         // if (hitOrStayInput == "1")
+    //         // {
+    //         //     
+    //         // }
+    //         return false;
+    //
+    //
+    //     }
+    //
+    //     public static void PlayGame()
+    //     {
+    //         var deck = new Deck();
+    //         var dealer = new Dealer(deck);
+    //         var human = new Human(deck);
+    //             
+    //         var blackJack = new BlackJack(dealer, human);
+    //         blackJack.StartGame();
+    //         Console.WriteLine($"You are currently at {human.CardTotalValue()}");
+    //         human.PrintPlayerHand();
+    //     }
+    //     
     }
 }
