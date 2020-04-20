@@ -18,6 +18,8 @@ namespace kata_blackjack
         protected Player(IDeck deck) 
         {
             _deck = deck;
+            DrawCard();
+            DrawCard();
         }
         
         
@@ -31,8 +33,7 @@ namespace kata_blackjack
         
         public int HandValue()
         {
-            
-            return Hand.Sum(card => card.Value);
+            return Hand.Sum(card => card.ValueOfCardFace);
         }
 
 
@@ -41,7 +42,7 @@ namespace kata_blackjack
             var returnString = string.Empty;
             foreach (Card card in Hand)
             {
-                returnString += card.CardFace.ToString() + " " + card.Suit.ToString() + Environment.NewLine;
+                returnString += card.CardFace + " " + card.Suit + " ";
             }
             
             return returnString;

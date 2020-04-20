@@ -39,7 +39,7 @@ namespace blackjackTests
         }
         
         [Test]
-        public void StaysOn21()
+        public void StaysOn20()
         {
             var testDeck = new TestDeck(new[]
             {
