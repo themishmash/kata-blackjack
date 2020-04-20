@@ -4,14 +4,16 @@ namespace kata_blackjack
     {
         public CardFace CardFace;
         public Suit Suit;
-        public int Value;
-        
+        public int ValueOfCardFace;
+
+        private const int MaxValueOfCards = 10;
+
         public Card(CardFace cardFace, Suit suit)
         {
             CardFace = cardFace;
             Suit = suit;
-            Value = (int) cardFace + 1;
-            if (Value > 10) Value = 10;
+            ValueOfCardFace = (int) cardFace + 1;
+            if (ValueOfCardFace > MaxValueOfCards) ValueOfCardFace = MaxValueOfCards;
         }
     }
 }

@@ -14,18 +14,14 @@ namespace kata_blackjack
           
             _dealer = dealer;
             _human = human;
+            
 
         }
         public void StartGame()
         {
+            _human.PlayTurn();
+            _dealer.PlayTurn();
             
-            //draw two cards.
-            _human.DrawCard();
-            _human.DrawCard();
-            
-            _dealer.DrawCard();
-            _dealer.DrawCard();
-
         }
 
 

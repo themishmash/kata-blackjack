@@ -5,6 +5,7 @@ namespace blackjackTests
 {
     public class DealerTests
     {
+
         [Test]
         public void StaysOn17()
         {
@@ -14,7 +15,6 @@ namespace blackjackTests
                 new Card(CardFace.Seven, Suit.Spades),
                 new Card(CardFace.Jack, Suit.Diamonds),
             });
-            
             var dealer = new Dealer(testDeck);
         
             dealer.PlayTurn();
@@ -39,7 +39,7 @@ namespace blackjackTests
         }
         
         [Test]
-        public void StaysOn21()
+        public void StaysOn20()
         {
             var testDeck = new TestDeck(new[]
             {
@@ -48,7 +48,6 @@ namespace blackjackTests
                 new Card(CardFace.Ace, Suit.Diamonds),
                 new Card(CardFace.Five, Suit.Diamonds),
             });
-            
             var dealer = new Dealer(testDeck);
       
             dealer.PlayTurn();
@@ -65,11 +64,8 @@ namespace blackjackTests
                 new Card(CardFace.Five, Suit.Hearts),
                 new Card(CardFace.Five, Suit.Spades),
             });
-            
             var dealer = new Dealer(testDeck);
-            
-            
-            
+
             Assert.AreEqual(10, dealer.HandValue());
         }
         

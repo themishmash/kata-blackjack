@@ -6,36 +6,38 @@ namespace kata_blackjack
     public class Human : Player
     
     {
-        protected override int MaxPlayerHandValue { get; } = 18;
+       // protected override int MaxPlayerHandValue { get; } = 18;
 
+       // public bool HitCard { get; set; }
 
-        public Human(IDeck deck) : base(deck)
-        {
-           
-        }
+       private readonly IInputOutput _iio;
+
+       public Human(IDeck deck, IInputOutput iio) : base(deck)
+       {
+           _iio = iio;
+       }
         
-        // public override void PlayTurn()
-        // {
-        //     HitCard();
-        //     HitCard();
-        //     HitCard();
-        //     
-        // }
         
         public override void PlayTurn()
         {
-            // while (HandValue() < MaxPlayerHandValue)
-            // {
-            //     DrawCard();
-            // }
-            string input = "";
-
-            if (input == "Y")
+            while (true)
             {
-                DrawCard();
+                _iio.Output($"Your hand value is currently {HandValue()}");
+                if (HandValue() < 21 && _iio.AskQuestion("Do you want to hit card?") == "y")
+                {
+                    DrawCard();
+                }//make a const for 21 number. 
+                else
+                {
+                  
+                    return;
+                }
             }
             
+           
         }
+        
+        
         
        
 

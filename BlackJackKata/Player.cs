@@ -7,43 +7,57 @@ namespace kata_blackjack
     public abstract class Player
     {
 
-        private readonly ICollection<Card> _hand = new List<Card>(); //playerhand property can be anything that 
-        //conforms ot collection interface. And collection has to be collection of cards
+        public readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
+        //conforms to collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
+
+        //public string HitCardInput;
 
         protected virtual int MaxPlayerHandValue { get; } 
 
         protected Player(IDeck deck) 
         {
             _deck = deck;
+            DrawCard();
+            DrawCard();
         }
         
         
         public void DrawCard()
         {
             var playerCard = _deck.DrawCard();
-            _hand.Add(playerCard);
+            Hand.Add(playerCard);
             
         }
         
         
         public int HandValue()
         {
-            
-            return _hand.Sum(card => card.Value);
+            return Hand.Sum(card => card.ValueOfCardFace);
         }
-        
 
 
-        protected void HitCard()
+        public string PrintPlayerHand()
         {
-
-            if (HandValue() < MaxPlayerHandValue)
+            var returnString = string.Empty;
+            foreach (Card card in Hand)
             {
-                DrawCard();
+                returnString += card.CardFace + " " + card.Suit + " ";
             }
-
+            
+            return returnString;
         }
+
+
+        // protected void HitCard()
+        // {
+        //
+        //     if (HandValue() < MaxPlayerHandValue)
+        //     {
+        //         DrawCard();
+        //     }
+        //
+        // }
 
         public abstract void PlayTurn();
 

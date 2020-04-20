@@ -7,8 +7,7 @@ namespace kata_blackjack
 
         public Dealer(IDeck deck) : base(deck)
         {
-            DrawCard();
-            DrawCard();
+            
           
         }
 
