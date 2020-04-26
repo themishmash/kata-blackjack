@@ -4,9 +4,10 @@ using kata_blackjack;
 
 namespace blackjackTests
 {
+    
     public class TestDeck : IDeck
     {
-        
+
         private readonly Queue<Card> _testCards = new Queue<Card>();
 
         public TestDeck(IEnumerable<Card> testCards)
@@ -21,6 +22,8 @@ namespace blackjackTests
         {
             return _testCards.Dequeue();
         }
+
+        
         
         
         
