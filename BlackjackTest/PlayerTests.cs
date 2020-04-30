@@ -37,6 +37,25 @@ namespace blackjackTests
             Assert.AreEqual(13, player.HandValue());
         }
         
+        [Test]
+        public void AceChangesValue()
+        {
+            var testDeck = new TestDeck(new[]
+            {
+                new Card(CardFace.Ace, Suit.Clubs), 
+                new Card(CardFace.Ace, Suit.Diamonds),
+                new Card(CardFace.Five, Suit.Hearts),
+                new Card(CardFace.Five, Suit.Hearts),
+                
+            });
+
+            var player = new PlayerImplementation(testDeck);
+            player.PlayTurn();
+            player.PlayTurn();
+
+            Assert.AreEqual(12, player.HandValue());
+        }
+        
         
         private class PlayerImplementation:Player
         {
