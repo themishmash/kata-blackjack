@@ -8,7 +8,8 @@ namespace kata_blackjack
         private readonly Dealer _dealer;
         private readonly Human _human;
         
-        
+
+
         public BlackJack(Dealer dealer, Human human)
         {
           
@@ -37,7 +38,7 @@ namespace kata_blackjack
         }
 
 
-        public bool PlayerHasWon()
+        public bool HumanHasWon()
         {
             return _human.HandValue() > _dealer.HandValue() && !IsBust() || HasScore21();
         }

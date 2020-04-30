@@ -6,12 +6,14 @@ namespace kata_blackjack
 {
     public abstract class Player
     {
-
-        public readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
+        private readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
         //conforms to collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
 
-        //public string HitCardInput;
+        private int _value;
+        // private int _hardValue;
+        
+        
 
         protected virtual int MaxPlayerHandValue { get; } 
 
@@ -21,9 +23,9 @@ namespace kata_blackjack
             DrawCard();
             DrawCard();
         }
-        
-        
-        public void DrawCard()
+
+
+        protected void DrawCard()
         {
             var playerCard = _deck.DrawCard();
             Hand.Add(playerCard);
@@ -31,33 +33,41 @@ namespace kata_blackjack
         }
         
         
+        // public int HandValue()
+        // {
+        //     return Hand.Sum(card => card.ValueOfCardFace);
+        // }
+        
         public int HandValue()
         {
-            return Hand.Sum(card => card.ValueOfCardFace);
+            _value = Hand.Sum(card => card.ValueOfCardFace);
+            if (Hand.Any(card => card.CardFace == CardFace.Ace) && _value <= 11) 
+            {
+                return _value + 10;
+            }
+            // _hardValue = _softValue + 10;
+            // foreach (Card card in Hand)
+            // {
+            //     if (card.CardFace == CardFace.Ace && _hardValue <= 21)
+            //         return _hardValue;
+            // }
+            return _value;
         }
+        
+        
 
 
         public string PrintPlayerHand()
         {
             var returnString = string.Empty;
-            foreach (Card card in Hand)
+            foreach (var card in Hand)
             {
                 returnString += card.CardFace + " " + card.Suit + " ";
             }
             
             return returnString;
         }
-
-
-        // protected void HitCard()
-        // {
-        //
-        //     if (HandValue() < MaxPlayerHandValue)
-        //     {
-        //         DrawCard();
-        //     }
-        //
-        // }
+        
 
         public abstract void PlayTurn();
 

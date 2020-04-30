@@ -10,7 +10,9 @@ namespace kata_blackjack
 
        // public bool HitCard { get; set; }
        private const int WinningScore = 21;
-       private readonly IInputOutput _iio; 
+       private readonly IInputOutput _iio;
+       private const string HitInput = "1";
+       private const string StayInput = "0";
 
        public Human(IDeck deck, IInputOutput iio) : base(deck)
        {
@@ -22,7 +24,8 @@ namespace kata_blackjack
             while (true)
             {
                 _iio.Output($"Your are currently at {HandValue()}");
-                if (HandValue() < WinningScore && _iio.AskQuestion("Hit or stay? (Hit = 1, Stay = 0)") == "1")
+                if (HandValue() < WinningScore && _iio.AskQuestion($"Hit or stay? (Hit = {HitInput}, Stay = {StayInput})") 
+                == HitInput)
                 {
                     
                     DrawCard();
