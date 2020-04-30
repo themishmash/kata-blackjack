@@ -11,10 +11,7 @@ namespace kata_blackjack
         private readonly IDeck _deck;
 
         private int _value;
-        // private int _hardValue;
-        
-        
-
+       
         protected virtual int MaxPlayerHandValue { get; } 
 
         protected Player(IDeck deck) 
@@ -33,11 +30,6 @@ namespace kata_blackjack
         }
         
         
-        // public int HandValue()
-        // {
-        //     return Hand.Sum(card => card.ValueOfCardFace);
-        // }
-        
         public int HandValue()
         {
             _value = Hand.Sum(card => card.ValueOfCardFace);
@@ -45,12 +37,7 @@ namespace kata_blackjack
             {
                 return _value + 10;
             }
-            // _hardValue = _softValue + 10;
-            // foreach (Card card in Hand)
-            // {
-            //     if (card.CardFace == CardFace.Ace && _hardValue <= 21)
-            //         return _hardValue;
-            // }
+            
             return _value;
         }
         

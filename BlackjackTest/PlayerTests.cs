@@ -6,7 +6,7 @@ namespace blackjackTests
     public class PlayerTests
     {
         
-        [Test]//not working. look at Testdeck for inspiration - need two constructors in TestInput. Need similar methods from TestDeck
+        [Test]
         public void AceCanBeEleven()
         {
             var testDeck = new TestDeck(new[]

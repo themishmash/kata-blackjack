@@ -69,6 +69,5 @@ namespace blackjackTests
             Assert.AreEqual(10, dealer.HandValue());
         }
         
-       
     }
 }

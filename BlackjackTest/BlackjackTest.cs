@@ -6,51 +6,14 @@ namespace blackjackTests
 {
     public class Tests
     {
+        private const string StayInput = "0";
+        private const string HitInput = "1";
+        
         [SetUp]
         public void Setup()
         {
         }
         
-
-        // [Test]
-        // public void CheckIsBustedReturnTrueForScoreOver21()
-        // {
-        //     var testDeck = new TestDeck(new []
-        //     {
-        //         new Card(CardFace.Nine, Suit.Diamonds),
-        //         new Card(CardFace.Five, Suit.Spades), 
-        //         new Card(CardFace.Eight, Suit.Hearts),
-        //        
-        //     });
-        //     
-        //     var human = new Human(testDeck);
-        //     var dealer = new Dealer(testDeck);
-        //     var blackjack = new BlackJack(dealer, human);
-        //     
-        //     dealer.PlayTurn();
-        //     
-        //     Assert.AreEqual(true, blackjack.IsBust());
-        // }
-
-        // [Test]
-        // public void CheckIfPlayerScoreIs21()
-        // {
-        //     var testDeck = new TestDeck(new []
-        //     {
-        //         new Card(CardFace.King, Suit.Hearts), 
-        //         new Card(CardFace.Three, Suit.Spades), 
-        //         new Card(CardFace.Eight, Suit.Diamonds),
-        //        
-        //     });
-        //     
-        //     var human = new Human(testDeck);
-        //     var dealer = new Dealer(testDeck);
-        //     var blackjack = new BlackJack(dealer, human);
-        //     
-        //    dealer.PlayTurn();
-        //     
-        //     Assert.AreEqual(true, blackjack.HasScore21());
-        // }
 
 
         [Test]
@@ -64,7 +27,7 @@ namespace blackjackTests
                  new Card(CardFace.Seven, Suit.Diamonds),
                  new Card(CardFace.Ace, Suit.Hearts), 
              });
-             var testQuestionResponse = new TestResponder("0");
+             var testQuestionResponse = new TestResponder(StayInput);
              var human = new Human(testDeck, testQuestionResponse);
              var dealer = new Dealer(testDeck);
              var blackjack = new BlackJack(dealer, human);
@@ -89,9 +52,9 @@ namespace blackjackTests
              });
              var testQuestionResponse = new TestResponder( new[]
              {
-                 "1",
-                 "1",
-                 "0"
+                 HitInput,
+                 HitInput,
+                 StayInput
              });
              var human = new Human(testDeck, testQuestionResponse);
              var dealer = new Dealer(testDeck);
@@ -115,7 +78,7 @@ namespace blackjackTests
                  new Card(CardFace.Nine, Suit.Diamonds),
                  new Card(CardFace.Ace, Suit.Hearts), 
              });
-             var testQuestionResponse = new TestResponder("0");
+             var testQuestionResponse = new TestResponder(StayInput);
              var human = new Human(testDeck, testQuestionResponse);
              var dealer = new Dealer(testDeck);
              var blackjack = new BlackJack(dealer, human);
@@ -139,7 +102,7 @@ namespace blackjackTests
                 new Card(CardFace.Nine, Suit.Diamonds),
                 new Card(CardFace.Ace, Suit.Hearts), 
             });
-            var testQuestionResponse = new TestResponder("1");
+            var testQuestionResponse = new TestResponder(HitInput);
             var human = new Human(testDeck, testQuestionResponse);
             var dealer = new Dealer(testDeck);
             var blackjack = new BlackJack(dealer, human);
@@ -165,8 +128,8 @@ namespace blackjackTests
             });
             var testQuestionResponse = new TestResponder( new[]
             {
-                "1",
-                "0", 
+                HitInput,
+                StayInput, 
             });
             var human = new Human(testDeck, testQuestionResponse);
             var dealer = new Dealer(testDeck);
