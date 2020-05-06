@@ -57,6 +57,8 @@ namespace blackjackTests
         }
         
         
+        
+        
         private class PlayerImplementation:Player
         {
             public PlayerImplementation(IDeck deck) : base(deck)

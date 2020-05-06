@@ -2,9 +2,9 @@ namespace kata_blackjack
 {
     public class Card
     {
-        public CardFace CardFace;
-        public Suit Suit;
-        public int ValueOfCardFace;
+        public readonly CardFace CardFace;
+        public readonly Suit Suit;
+        public readonly int ValueOfCardFace;
 
         private const int MaxValueOfCards = 10;
 

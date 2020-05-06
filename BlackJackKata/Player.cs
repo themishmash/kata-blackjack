@@ -41,8 +41,6 @@ namespace kata_blackjack
             return _value;
         }
         
-        
-
 
         public string PrintPlayerHand()
         {

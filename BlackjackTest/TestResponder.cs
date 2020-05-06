@@ -14,9 +14,9 @@ namespace blackjackTests
         
         
         public TestResponder(string response)
-        
         {
             _testResponses.Enqueue(response);
+            //_response = response;
         }
         
 

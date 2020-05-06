@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace blackjackTests
 {
-    public class DealerTests
+    public class Soft17PlayerTests
     {
 
         [Test]
@@ -15,11 +15,11 @@ namespace blackjackTests
                 new Card(CardFace.Seven, Suit.Spades),
                 new Card(CardFace.Jack, Suit.Diamonds),
             });
-            var dealer = new Dealer(testDeck);
+            var soft17Player = new Soft17Player(testDeck);
         
-            dealer.PlayTurn();
+            soft17Player.PlayTurn();
             
-            Assert.AreEqual(17, dealer.HandValue());
+            Assert.AreEqual(17, soft17Player.HandValue());
         }
         
         [Test]
@@ -31,11 +31,11 @@ namespace blackjackTests
                 new Card(CardFace.Six, Suit.Spades),
                 new Card(CardFace.Ten, Suit.Diamonds),
             });
-            var dealer = new Dealer(testDeck);
+            var soft17Player = new Soft17Player(testDeck);
             
-            dealer.PlayTurn();
+            soft17Player.PlayTurn();
             
-            Assert.AreEqual(26, dealer.HandValue());
+            Assert.AreEqual(26, soft17Player.HandValue());
         }
         
         [Test]
@@ -48,11 +48,11 @@ namespace blackjackTests
                 new Card(CardFace.Ace, Suit.Diamonds),
                 new Card(CardFace.Five, Suit.Diamonds),
             });
-            var dealer = new Dealer(testDeck);
+            var soft17Player = new Soft17Player(testDeck);
       
-            dealer.PlayTurn();
+            soft17Player.PlayTurn();
 
-            Assert.AreEqual(20, dealer.HandValue());
+            Assert.AreEqual(20, soft17Player.HandValue());
 
         }
 
@@ -64,9 +64,9 @@ namespace blackjackTests
                 new Card(CardFace.Five, Suit.Hearts),
                 new Card(CardFace.Five, Suit.Spades),
             });
-            var dealer = new Dealer(testDeck);
+            var soft17Player = new Soft17Player(testDeck);
 
-            Assert.AreEqual(10, dealer.HandValue());
+            Assert.AreEqual(10, soft17Player.HandValue());
         }
         
     }

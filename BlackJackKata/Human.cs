@@ -23,7 +23,7 @@ namespace kata_blackjack
         {
             while (true)
             {
-                _iio.Output($"Your are currently at {HandValue()}");
+                _iio.Output($"You are currently at {HandValue()}");
                 if (HandValue() < WinningScore && _iio.AskQuestion($"Hit or stay? (Hit = {HitInput}, Stay = {StayInput})") 
                 == HitInput)
                 {
