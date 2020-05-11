@@ -14,9 +14,13 @@ namespace kata_blackjack
        
         protected virtual int MaxPlayerHandValue { get; } 
 
-        protected Player(IDeck deck) 
+        protected Player(IDeck deck)
         {
             _deck = deck;
+        }
+
+        public void NewHand()
+        {
             DrawCard();
             DrawCard();
         }

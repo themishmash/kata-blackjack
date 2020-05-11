@@ -37,9 +37,6 @@ namespace kata_blackjack
             }
         }
         
-        
-        
-       
 
     }
 }

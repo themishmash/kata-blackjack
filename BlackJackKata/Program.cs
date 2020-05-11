@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace kata_blackjack
 {
@@ -12,14 +13,15 @@ namespace kata_blackjack
             {
                 new Human(deck, new ConsoleInputOutput()),
                 new Human(deck, new ConsoleInputOutput()),
-                new Human(deck, new ConsoleInputOutput()),
+                new Human(deck, new ConsoleInputOutput())
+                // new Human(deck, new ConsoleInputOutput()),
             };
             var dealer = new Soft17Player(deck);
             //var human = new Human(deck, new ConsoleInputOutput());
             var blackjack = new BlackJack(players, dealer);
             
             blackjack.StartGame();
-          
+
             
        
         }
