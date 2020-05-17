@@ -3,71 +3,72 @@ using NUnit.Framework;
 
 namespace blackjackTests
 {
-    public class Hard17PlayerTests
+    public class DealerTests
     {
 
         [Test]
-        public void HitsOn17()
+        public void StaysOn17()
         {
-            var testDeck = new DeckMock(new[]
+            var testDeck = new TestDeck(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Seven, Suit.Spades),
                 new Card(CardFace.Jack, Suit.Diamonds),
             });
-            var hard17Player = new Hard17Player(testDeck);
+            var dealer = new Dealer(testDeck);
         
-            hard17Player.PlayTurn();
+            dealer.PlayTurn();
             
-            Assert.AreEqual(27, hard17Player.HandValue());
+            Assert.AreEqual(17, dealer.HandValue());
         }
         
         [Test]
         public void HitsUnder17()
         {
-            var testDeck = new DeckMock(new[]
+            var testDeck = new TestDeck(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Six, Suit.Spades),
                 new Card(CardFace.Ten, Suit.Diamonds),
             });
-            var hard17Player = new Hard17Player(testDeck);
+            var dealer = new Dealer(testDeck);
             
-            hard17Player.PlayTurn();
+            dealer.PlayTurn();
             
-            Assert.AreEqual(26, hard17Player.HandValue());
+            Assert.AreEqual(26, dealer.HandValue());
         }
         
         [Test]
         public void StaysOn20()
         {
-            var testDeck = new DeckMock(new[]
+            var testDeck = new TestDeck(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Jack, Suit.Spades),
                 new Card(CardFace.Ace, Suit.Diamonds),
                 new Card(CardFace.Five, Suit.Diamonds),
             });
-            var hard17Player = new Hard17Player(testDeck);
+            var dealer = new Dealer(testDeck);
       
-            hard17Player.PlayTurn();
+            dealer.PlayTurn();
 
-            Assert.AreEqual(20, hard17Player.HandValue());
+            Assert.AreEqual(20, dealer.HandValue());
 
         }
 
         [Test]
         public void StartsWithTwoCards()
         {
-            var testDeck = new DeckMock(new[]
+            var testDeck = new TestDeck(new[]
             {
                 new Card(CardFace.Five, Suit.Hearts),
                 new Card(CardFace.Five, Suit.Spades),
             });
-            var hard17Player = new Hard17Player(testDeck);
+            var dealer = new Dealer(testDeck);
 
-            Assert.AreEqual(10, hard17Player.HandValue());
+            Assert.AreEqual(10, dealer.HandValue());
         }
         
+       
     }
 }

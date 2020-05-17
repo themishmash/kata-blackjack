@@ -10,7 +10,7 @@ namespace blackjackTests
         public void InitialiseDeckStartsWith52Cards()
         {
             var deck = new Deck();
-            Assert.AreEqual(52, deck.CardsLeft());
+            Assert.AreEqual(52, deck.TotalNumberOfCardsInCardList());
         }
 
         [Test]
@@ -28,7 +28,7 @@ namespace blackjackTests
             
             var cardDrawn = deck.DrawCard();
 
-            Assert.AreEqual(51, deck.CardsLeft());
+            Assert.AreEqual(51, deck.TotalNumberOfCardsInCardList());
             Assert.IsFalse(deck.CardList.Contains(cardDrawn)); //Windy helped with this
         }
         

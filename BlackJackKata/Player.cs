@@ -6,30 +6,24 @@ namespace kata_blackjack
 {
     public abstract class Player
     {
-        private readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
+
+        public readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
         //conforms to collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
 
-        private int _value;
-       
-        protected virtual int MaxPlayerHandValue { get; }
+        //public string HitCardInput;
 
-        public GameStatus GameStatus { get; set; }
+        protected virtual int MaxPlayerHandValue { get; } 
 
-        protected Player(IDeck deck)
+        protected Player(IDeck deck) 
         {
             _deck = deck;
-            GameStatus = GameStatus.Playing;
-        }
-
-        public void NewHand()
-        {
             DrawCard();
             DrawCard();
         }
-
-
-        protected virtual void DrawCard()
+        
+        
+        public void DrawCard()
         {
             var playerCard = _deck.DrawCard();
             Hand.Add(playerCard);
@@ -39,27 +33,31 @@ namespace kata_blackjack
         
         public int HandValue()
         {
-            _value = Hand.Sum(card => card.ValueOfCardFace);
-            if (Hand.Any(card => card.CardFace == CardFace.Ace) && _value <= 11) 
-            {
-                return _value + 10;
-            }
-            
-            return _value;
+            return Hand.Sum(card => card.ValueOfCardFace);
         }
-        
+
 
         public string PrintPlayerHand()
         {
             var returnString = string.Empty;
-            foreach (var card in Hand)
+            foreach (Card card in Hand)
             {
                 returnString += card.CardFace + " " + card.Suit + " ";
             }
             
             return returnString;
         }
-        
+
+
+        // protected void HitCard()
+        // {
+        //
+        //     if (HandValue() < MaxPlayerHandValue)
+        //     {
+        //         DrawCard();
+        //     }
+        //
+        // }
 
         public abstract void PlayTurn();
 
