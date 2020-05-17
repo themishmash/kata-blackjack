@@ -8,15 +8,11 @@ namespace blackjackTests
 {
     public class TestResponder : IInputOutput
     {
-       
-        //private readonly string _response;  //if public use {get;} getter which is called auto property
         private readonly Queue <string>_testResponses = new Queue<string>();
-        
-        
+
         public TestResponder(string response)
         {
             _testResponses.Enqueue(response);
-            //_response = response;
         }
         
 

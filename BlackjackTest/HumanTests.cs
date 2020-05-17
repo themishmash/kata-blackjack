@@ -12,7 +12,7 @@ namespace blackjackTests
         public void PlayerStartsWithTwoCards()
         {
             //Given
-            var testDeck = new TestDeck((new []
+            var testDeck = new DeckMock((new []
             {
                 new Card(CardFace.Eight, Suit.Clubs), 
                 new Card(CardFace.Eight, Suit.Diamonds),
@@ -21,7 +21,7 @@ namespace blackjackTests
             }));
             var testQuestionResponse = new TestResponder(StayInput);
             var human = new Human(testDeck, testQuestionResponse);
-            human.PlayTurn(); //don't need this
+            human.PlayTurn();
             
             //When
 
@@ -32,7 +32,7 @@ namespace blackjackTests
         [Test]
         public void PlayerCanHit()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Eight, Suit.Clubs), 
                 new Card(CardFace.Eight, Suit.Diamonds),
@@ -50,7 +50,7 @@ namespace blackjackTests
         [Test]
         public void PlayerCantHitAt21()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Eight, Suit.Clubs), 
                 new Card(CardFace.Eight, Suit.Diamonds),
@@ -69,7 +69,7 @@ namespace blackjackTests
         [Test]
         public void PlayerCanHitAt20()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Clubs), 
                 new Card(CardFace.Ten, Suit.Diamonds),
@@ -87,7 +87,7 @@ namespace blackjackTests
         [Test]
         public void PlayerCanStayWithTwoCards()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Clubs), 
                 new Card(CardFace.Ten, Suit.Diamonds),
@@ -101,10 +101,10 @@ namespace blackjackTests
             Assert.AreEqual(20, human.HandValue());
         }
         
-        [Test]//not working. look at Testdeck for inspiration - need two constructors in TestInput. Need similar methods from TestDeck
+        [Test]
         public void PlayerCanHitAndThenStay()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Clubs), 
                 new Card(CardFace.Five, Suit.Diamonds),
@@ -124,10 +124,10 @@ namespace blackjackTests
         }
         
         
-        [Test]//not working. look at Testdeck for inspiration - need two constructors in TestInput. Need similar methods from TestDeck
+        [Test]
         public void AceCanBeEleven()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Six, Suit.Clubs), 
                 new Card(CardFace.Ace, Suit.Diamonds),
@@ -140,16 +140,12 @@ namespace blackjackTests
                 HitInput,
                 HitInput,
                 StayInput, 
-            }); //put in () "0"
+            });
             var human = new Human(testDeck, testQuestionResponse);
             
             human.PlayTurn();
 
             Assert.AreEqual(20, human.HandValue());
         }
-        
-        
-        
-        
     }
 }

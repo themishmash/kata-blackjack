@@ -12,11 +12,14 @@ namespace kata_blackjack
 
         private int _value;
        
-        protected virtual int MaxPlayerHandValue { get; } 
+        protected virtual int MaxPlayerHandValue { get; }
+
+        public GameStatus GameStatus { get; set; }
 
         protected Player(IDeck deck)
         {
             _deck = deck;
+            GameStatus = GameStatus.Playing;
         }
 
         public void NewHand()
@@ -26,7 +29,7 @@ namespace kata_blackjack
         }
 
 
-        protected void DrawCard()
+        protected virtual void DrawCard()
         {
             var playerCard = _deck.DrawCard();
             Hand.Add(playerCard);

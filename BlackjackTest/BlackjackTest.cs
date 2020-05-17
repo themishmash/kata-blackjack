@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using kata_blackjack;
 using NUnit.Framework;
 
@@ -6,7 +8,7 @@ namespace blackjackTests
 {
     public class Tests
     {
-        private const string StayInput = "0";
+        private const string StayResponse = "0";
         private const string HitInput = "1";
         
         [SetUp]
@@ -15,219 +17,193 @@ namespace blackjackTests
         }
         
 
-
         [Test]
-         public void Soft17PlayerWin()
+         public void DealerWins()
          {
-             var testDeck = new TestDeck(new[]
+             var player = PlayerSpy.CreateLosingPlayer();
+             var dealerDeck = new DeckMock(new[]
              {
                  new Card(CardFace.Eight, Suit.Hearts),
-                 new Card(CardFace.Eight, Suit.Diamonds),
-                 new Card(CardFace.Ten, Suit.Spades), 
-                 new Card(CardFace.Seven, Suit.Diamonds),
+                 new Card(CardFace.Ten, Suit.Diamonds),
                  new Card(CardFace.Ace, Suit.Hearts), 
              });
-             var testQuestionResponse = new TestResponder(StayInput);
-             var human = new Human(testDeck, testQuestionResponse);
-             var soft17Player = new Soft17Player(testDeck);
+             var dealer = new Soft17Player(dealerDeck);
+             var blackjack = new BlackJack(new List<Player> {player}, dealer);
+             blackjack.StartGame();
+             
+             Assert.AreEqual(true, blackjack.HasPlayerWon(dealer));
+             Assert.AreEqual(GameStatus.Won, dealer.GameStatus); //not working
+         }
+         
+         //Not using enum
+         [Test]
+         public void HumanWinsWithBlackJack()
+         {
+             var human = PlayerSpy.CreateBlackJackPlayer();
+             var soft17Player = new Soft17Player(new Deck());
              var blackjack = new BlackJack(new List<Player> {human}, soft17Player);
              
-             //human.PlayTurn();
+             blackjack.StartGame(); 
              
-             //Assert.AreEqual(16, human.HandValue());
-             Assert.AreEqual(false, blackjack.PlayerHasWon(human));
+             //Assert.AreEqual(true, blackjack.HasPlayerWon(human));
+            Assert.AreEqual(GameStatus.BlackJack, human.GameStatus);
          }
          
          [Test]
-         public void HumanWin()
+         public void HumanWinsWithBlackJackEnum()
          {
-             var testDeck = new TestDeck(new[]
+             var dealerCards = new DeckMock(new[]
              {
-                 new Card(CardFace.Jack, Suit.Hearts), //Human
-                 new Card(CardFace.Six, Suit.Spades), //Human
-                 new Card(CardFace.Jack, Suit.Diamonds), //Soft17Player
-                 new Card(CardFace.Seven, Suit.Spades), //Soft17Player
-                 new Card(CardFace.Two, Suit.Diamonds), //Human
-                 new Card(CardFace.Ace, Suit.Hearts), 
+                 new Card(CardFace.Eight, Suit.Hearts),
+                 new Card(CardFace.Ten, Suit.Diamonds),
+                
              });
-             var testQuestionResponse = new TestResponder( new[]
-             {
-                 HitInput,
-                 HitInput,
-                 StayInput
-             });
-             var human = new Human(testDeck, testQuestionResponse);
-             var soft17Player = new Soft17Player(testDeck);
-             var blackjack = new BlackJack(new List<Player> {human}, soft17Player);
              
-             human.PlayTurn();
-
-             //Assert.AreEqual(18, human.HandValue());
-             Assert.AreEqual(true, blackjack.PlayerHasWon(human));
+             var playerCards = new DeckMock(new[]
+             {
+                 new Card(CardFace.Ace, Suit.Hearts), 
+                 new Card(CardFace.Jack, Suit.Diamonds), 
+             });
+             var playerResponse = new TestResponder(new []
+             {
+                 StayResponse,
+             });
+             var player = new Human(playerCards, playerResponse);
+             var soft17Player = new Soft17Player(dealerCards);
+             var blackjack = new BlackJack(new List<Player> {player}, soft17Player);
+             
+             blackjack.StartGame();
+             
+             Assert.AreEqual(GameStatus.BlackJack, player.GameStatus);
          }
          
          [Test]
-         public void Soft17PlayerBusts()
+         public void DealerBusts()
          {
-             var testDeck = new TestDeck(new[]
+             var player = PlayerSpy.CreatePlayerHandValue18();
+             var dealerDeck = new DeckMock(new[]
              {
                  new Card(CardFace.Jack, Suit.Hearts),
                  new Card(CardFace.Six, Suit.Spades),
-                 new Card(CardFace.Jack, Suit.Diamonds),
-                 new Card(CardFace.Eight, Suit.Spades), 
                  new Card(CardFace.Nine, Suit.Diamonds),
-                 new Card(CardFace.Ace, Suit.Hearts), 
              });
-             var testQuestionResponse = new TestResponder(StayInput);
-             var human = new Human(testDeck, testQuestionResponse);
-             var dealer = new Soft17Player(testDeck);
-             var blackjack = new BlackJack(new List<Player> {human}, dealer);
+           
+             var dealer = new Soft17Player(dealerDeck);
+             var blackjack = new BlackJack(new List<Player> {player}, dealer);
             
-            blackjack.StartGame();
+             blackjack.StartGame();
             
-             Assert.AreEqual(25, dealer.HandValue());
-             Assert.AreEqual(true, blackjack.PlayerHasWon(human));
-             Assert.AreEqual(true, BlackJack.HasBusted(dealer));
+             //Assert.AreEqual(true, blackjack.HasBusted(dealer));
+             Assert.AreEqual(GameStatus.Busted, dealer.GameStatus);
          } 
 
         [Test]
         public void HumanHitsAndBusts()
         {
-            var testDeck = new TestDeck(new[]
+            var player = PlayerSpy.CreateBustedPlayer();
+            var dealerDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Jack, Suit.Hearts),
                 new Card(CardFace.Eight, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
-                new Card(CardFace.Three, Suit.Spades), 
-                new Card(CardFace.Nine, Suit.Diamonds),
-                new Card(CardFace.Ace, Suit.Hearts), 
             });
-            var testQuestionResponse = new TestResponder(new[]
-            {
-                HitInput,
-                HitInput,
-                HitInput,
-                StayInput
-            });
-            var human = new Human(testDeck, testQuestionResponse);
-            var players = new List<Player> {human};
-            var dealer = new Soft17Player(testDeck);
-            var blackjack = new BlackJack(players, dealer);
+            
+            var dealer = new Soft17Player(dealerDeck);
+            var blackjack = new BlackJack(new List<Player>{player}, dealer);
 
-            //blackjack.StartGame();
-            human.PlayTurn();
+            blackjack.StartGame();
             
-            Assert.AreEqual(28, human.HandValue());
-            Assert.AreEqual(false, blackjack.PlayerHasWon(human));
-            Assert.AreEqual(true, BlackJack.HasBusted(human));
-        }
-
-        [Test]
-        public void ValueOfAceAsOne()
-        {
-            var testDeck = new TestDeck(new[]
-            {
-                // new Card(CardFace.Jack, Suit.Hearts),
-                // new Card(CardFace.Eight, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
-                new Card(CardFace.Three, Suit.Spades), 
-                new Card(CardFace.Ace, Suit.Diamonds),
-                new Card(CardFace.Ace, Suit.Hearts), 
-            });
-            var testQuestionResponse = new TestResponder( new[]
-            {
-                HitInput,
-                HitInput,
-                HitInput,
-                StayInput, 
-            });
-            var human = new Human(testDeck, testQuestionResponse);
-            var soft17Player = new Soft17Player(testDeck);
-            var blackjack = new BlackJack(new List<Player> {human}, soft17Player);
-            
-            //blackjack.StartGame();
-            human.PlayTurn();
-            
-            Assert.AreEqual(14, human.HandValue());
-            //Assert.AreEqual(false, blackjack.HumanHasWon());
-            //Assert.AreEqual(true, blackjack.IsBust());
+           // Assert.AreEqual(true, blackjack.HasBusted(player));
+            Assert.AreEqual(GameStatus.Busted, player.GameStatus);
         }
         
         
         [Test]
-
-        public void CreateMultiplePlayersShownByDecreaseInDeckCards()
+        public void EachPlayerPlaysTheirTurn()
         {
-            var testDeck = new TestDeck(new[]
-            {
-                new Card(CardFace.Jack, Suit.Hearts),
-                new Card(CardFace.Eight, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
-                new Card(CardFace.Three, Suit.Spades), 
-                new Card(CardFace.Ace, Suit.Diamonds),
-                new Card(CardFace.Ace, Suit.Hearts), 
-                new Card(CardFace.Jack, Suit.Hearts),
-                new Card(CardFace.Eight, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
+            var deck = new Deck();
 
-            });
+            var player1 = new PlayerSpy(deck, 0);
+            var player2 = new PlayerSpy(deck, 1);
             
-            var testQuestionResponse1 = new TestResponder(StayInput);
-            var testQuestionResponse2 = new TestResponder(StayInput);
-
-            var players = new List<Player>()
-            {
-                new Human(testDeck, testQuestionResponse1),
-                new Human(testDeck, testQuestionResponse2),
-            };
-           
-            var dealer = new Soft17Player(testDeck);
-            var blackjack = new BlackJack(players, dealer);
+            var dealer = new Soft17Player(deck);
+            var blackjack = new BlackJack(new []{player1, player2}, dealer);
             
             blackjack.StartGame();
             
-            Assert.AreEqual(3, testDeck._testCards.Count);
-           // Assert.AreEqual(2, blackjack._playerList.Count); don't change class to be public just to get test to pass!
+            Assert.NotZero(player1.NumberOfTimesTurnPlayed);
+            Assert.NotZero(player2.NumberOfTimesTurnPlayed);
+            
         }
 
+
         [Test]
-        public void DealerPlayTurnAfterAllPlayersPlayTurn()
+        public void NumberOfTimesPlayTurnCalledForPlayer()
         {
-            var testDeck = new TestDeck(new[]
-            {
-                new Card(CardFace.Jack, Suit.Hearts),
-                new Card(CardFace.Two, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
-                new Card(CardFace.Five, Suit.Spades), 
-                new Card(CardFace.Three, Suit.Diamonds),
-                new Card(CardFace.Nine, Suit.Hearts), 
-                new Card(CardFace.Seven, Suit.Hearts),
-                new Card(CardFace.Eight, Suit.Spades),
-                new Card(CardFace.Jack, Suit.Diamonds),
-
-            });
+            var deck = new Deck();
+            var playerResponses = new TestResponder(new [] { HitInput, StayResponse });
+            var player = new PlayerSpy(deck, 1);
+            var dealer = new Soft17Player(deck);
+            var blackjack = new BlackJack(new []{player}, dealer);
+            blackjack.StartGame();
             
-            var testQuestionResponse1 = new TestResponder(new[]
-            {
-                HitInput,
-                StayInput,
-            });
-            var testQuestionResponse2 = new TestResponder(StayInput);
+            Assert.AreEqual(1, player.NumberOfTimesTurnPlayed);
+            
+        }
+        
+        
 
+        [Test]
+        public void DealerPlaysTurnAfterAllPlayersPlayTurn()
+        {
+            var deck = new Deck();
+            var deckStartCount = deck.CardsLeft();
+            
             var players = new List<Player>()
             {
-                new Human(testDeck, testQuestionResponse1),
-                new Human(testDeck, testQuestionResponse2),
+                new Soft17Player(deck),
+                new Soft17Player(deck),
+                new Soft17Player(deck),
             };
            
-            var dealer = new Soft17Player(testDeck);
+            var dealer = new DealerSpy(deck);
             var blackjack = new BlackJack(players, dealer);
             
             blackjack.StartGame();
 
-            Assert.AreEqual(20, dealer.HandValue());
-            //Assert.AreEqual(22, players[0].HandValue());
+            var cardsLeftBeforeDealersTurn = dealer.CardsLeftInDeckBeforeTurn;
+            var cardsIfNoPlayerPlayed = deckStartCount - players.Count * 2 - 2;
+
+            Assert.AreNotEqual(cardsIfNoPlayerPlayed,cardsLeftBeforeDealersTurn);
+            
         }
         
+        //TODO 1. create always hit player in test 2. create 5 players to account for 4 players miraculously getting blackjack. so dealer and 3 players 3. 
+        [Test]
+        public void DealerPlaysTurnAfter3PlayersPlayTurn()
+        {
+            var deck = new Deck();
+            var deckStartCount = deck.CardsLeft();
+            
+            var players = new List<Player>()
+            {
+                new PlayerAlwaysHits(deck),
+                new PlayerAlwaysHits(deck),
+                new PlayerAlwaysHits(deck),
+                new PlayerAlwaysHits(deck)
+            };
+           
+            var dealer = new DealerSpy(deck);
+            var blackjack = new BlackJack(players, dealer);
+            
+            blackjack.StartGame();
+        
+            var cardsLeftBeforeDealersTurn = dealer.CardsLeftInDeckBeforeTurn;
+            var cardsIfNoPlayerPlayed = deckStartCount - players.Count * 2 - 2;
+
+            Assert.AreNotEqual(cardsIfNoPlayerPlayed,cardsLeftBeforeDealersTurn);
+            Assert.AreEqual(42, cardsIfNoPlayerPlayed);
+        }
+        
+
     }
 }

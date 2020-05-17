@@ -7,6 +7,8 @@ namespace kata_blackjack
     {
         private readonly Player _dealer;
        // private readonly Player _human;
+       
+       private List<Player> WinningPlayer;
         
         private readonly IList<Player> _playerList;
         //public ICollection<Player> _playerList;
@@ -26,7 +28,7 @@ namespace kata_blackjack
 
         public void StartGame()
         {
-            //var human = _playerList.First();
+           WinningPlayer = new List<Player>();
             _dealer.NewHand();
             foreach (var player in _playerList)
             {
@@ -34,59 +36,64 @@ namespace kata_blackjack
             }
 
             var i = 0;
-            foreach (var human in _playerList)
+            foreach (var player in _playerList)
             {
-                human.PlayTurn();
+                player.PlayTurn();
                 i++;
-                if (HasBusted(human))
+                if (HasBusted(player))
                 {
+                    player.GameStatus = GameStatus.Busted;
                     Console.WriteLine($"Player {i} has busted");
-                    continue; //continue instead of return so go to another player
-                }
-                
-                if (HasBlackJack(human))
-                {
-                    Console.WriteLine($"Player {i} wins with BlackJack");
-                    continue;
+                    continue; 
                 }
 
-                
-                _dealer.PlayTurn();
-                // if (PlayerHasWon(human))
-                // {
-                //     Console.WriteLine(
-                //         $"Player wins with {human.HandValue()} and dealer has score of {_dealer.HandValue()}");
-                //     continue;
-                // }
-                //
-                // Console.WriteLine(
-                //     $"Dealer wins with score of {_dealer.HandValue()} and player has score of {human.HandValue()}");
+                if (!HasBlackJack(player)) continue;
+                player.GameStatus = GameStatus.BlackJack;
+                Console.WriteLine($"Player {i} wins with BlackJack");
+            }
+            
+            _dealer.PlayTurn();
 
-                
+            if (HasBusted(_dealer))
+            {
+                _dealer.GameStatus = GameStatus.Busted;
             }
 
-            Console.WriteLine(_dealer.HandValue());
+            if (HasBlackJack(_dealer))
+            {
+                _dealer.GameStatus = GameStatus.BlackJack;
+            }
             
             foreach (var player in _playerList)
             {
+                if (HasBusted(player) || HasBlackJack(player)) continue;
                 var index = _playerList.IndexOf(player) + 1;
-                if (PlayerHasWon(player))
+                
+                
+                if (HasBeatenDealer(player))
                 {
-                    
+                    if (!HasBusted(_dealer))
+                    {
+                        _dealer.GameStatus = GameStatus.Lost;
+                    }
+                    player.GameStatus = GameStatus.Won;
                     Console.WriteLine($"Player {index} wins against the dealer");
+                    WinningPlayer.Add(player);
                 }
                 else
                 {
+                    player.GameStatus = GameStatus.Lost;
+                    _dealer.GameStatus = GameStatus.Won;
                     Console.WriteLine($"Player {index} loses against the dealer");
+                    WinningPlayer.Add(_dealer);
                 }
+
             }
-
-
-            //human.PlayTurn();
+            
         }
 
 
-        public static bool HasBusted(Player player)
+        private bool HasBusted(Player player)
         {
             return player.HandValue() > 21;
         }
@@ -98,10 +105,15 @@ namespace kata_blackjack
         }
 
 
-        public bool PlayerHasWon(Player player)
+        private bool HasBeatenDealer(Player player)
         {
             return player.HandValue() > _dealer.HandValue() && !HasBusted(player) && !HasBusted(_dealer) ||
                    HasBusted(_dealer);
+        }
+
+        public bool HasPlayerWon(Player player)
+        {
+            return WinningPlayer.Contains(player);
         }
     }
 }

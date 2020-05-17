@@ -34,13 +34,9 @@ namespace kata_blackjack
                 CardList[n] = value;
             }
         }
+        
 
-        // public void PrintDeck()
-        // {
-        //     foreach (var card in CardList) Console.WriteLine($"{card.CardFace} of {card.Suit}");
-        // }
-
-        public int TotalNumberOfCardsInCardList()
+        public int CardsLeft()
         {
             return CardList.Count;
         }

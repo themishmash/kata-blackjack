@@ -9,11 +9,10 @@ namespace blackjackTests
         [Test]
         public void AceCanBeEleven()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Jack, Suit.Clubs), 
                 new Card(CardFace.Ace, Suit.Diamonds),
-
             });
 
             var player = new PlayerImplementation(testDeck);
@@ -24,7 +23,7 @@ namespace blackjackTests
         [Test]
         public void AddThreeAces()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ace, Suit.Clubs), 
                 new Card(CardFace.Ace, Suit.Diamonds),
@@ -40,7 +39,7 @@ namespace blackjackTests
         [Test]
         public void AceChangesValue()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ace, Suit.Clubs), 
                 new Card(CardFace.Ace, Suit.Diamonds),

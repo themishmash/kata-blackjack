@@ -9,7 +9,7 @@ namespace blackjackTests
         [Test]
         public void HitsOn17()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Seven, Suit.Spades),
@@ -25,7 +25,7 @@ namespace blackjackTests
         [Test]
         public void HitsUnder17()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Six, Suit.Spades),
@@ -41,7 +41,7 @@ namespace blackjackTests
         [Test]
         public void StaysOn20()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Ten, Suit.Hearts),
                 new Card(CardFace.Jack, Suit.Spades),
@@ -59,7 +59,7 @@ namespace blackjackTests
         [Test]
         public void StartsWithTwoCards()
         {
-            var testDeck = new TestDeck(new[]
+            var testDeck = new DeckMock(new[]
             {
                 new Card(CardFace.Five, Suit.Hearts),
                 new Card(CardFace.Five, Suit.Spades),
