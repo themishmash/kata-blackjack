@@ -8,8 +8,8 @@ namespace kata_blackjack
         {
             Console.WriteLine(question);
             return Console.ReadLine();
-            
         }
+        
 
         public void Output(string message)
         {

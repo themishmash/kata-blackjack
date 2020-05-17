@@ -6,24 +6,30 @@ namespace kata_blackjack
 {
     public abstract class Player
     {
-
-        public readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
+        private readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
         //conforms to collection interface. And collection has to be collection of cards
         private readonly IDeck _deck;
 
-        //public string HitCardInput;
+        private int _value;
+       
+        protected virtual int MaxPlayerHandValue { get; }
 
-        protected virtual int MaxPlayerHandValue { get; } 
+        public GameStatus GameStatus { get; set; }
 
-        protected Player(IDeck deck) 
+        protected Player(IDeck deck)
         {
             _deck = deck;
+            GameStatus = GameStatus.Playing;
+        }
+
+        public void NewHand()
+        {
             DrawCard();
             DrawCard();
         }
-        
-        
-        public void DrawCard()
+
+
+        protected virtual void DrawCard()
         {
             var playerCard = _deck.DrawCard();
             Hand.Add(playerCard);
@@ -33,31 +39,27 @@ namespace kata_blackjack
         
         public int HandValue()
         {
-            return Hand.Sum(card => card.ValueOfCardFace);
+            _value = Hand.Sum(card => card.ValueOfCardFace);
+            if (Hand.Any(card => card.CardFace == CardFace.Ace) && _value <= 11) 
+            {
+                return _value + 10;
+            }
+            
+            return _value;
         }
-
+        
 
         public string PrintPlayerHand()
         {
             var returnString = string.Empty;
-            foreach (Card card in Hand)
+            foreach (var card in Hand)
             {
                 returnString += card.CardFace + " " + card.Suit + " ";
             }
             
             return returnString;
         }
-
-
-        // protected void HitCard()
-        // {
-        //
-        //     if (HandValue() < MaxPlayerHandValue)
-        //     {
-        //         DrawCard();
-        //     }
-        //
-        // }
+        
 
         public abstract void PlayTurn();
 
