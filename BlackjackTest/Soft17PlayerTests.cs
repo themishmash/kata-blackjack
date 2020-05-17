@@ -63,8 +63,11 @@ namespace blackjackTests
             {
                 new Card(CardFace.Five, Suit.Hearts),
                 new Card(CardFace.Five, Suit.Spades),
+                new Card(CardFace.Eight, Suit.Clubs), 
             });
             var soft17Player = new Soft17Player(testDeck);
+            
+            soft17Player.NewHand();
 
             Assert.AreEqual(10, soft17Player.HandValue());
         }
