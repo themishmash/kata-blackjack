@@ -16,6 +16,8 @@ namespace blackjackTests
             });
 
             var player = new PlayerImplementation(testDeck);
+            player.PlayTurn();
+            player.PlayTurn();
 
             Assert.AreEqual(21, player.HandValue());
         }
@@ -31,6 +33,8 @@ namespace blackjackTests
             });
 
             var player = new PlayerImplementation(testDeck);
+            player.PlayTurn();
+            player.PlayTurn();
             player.PlayTurn();
 
             Assert.AreEqual(13, player.HandValue());

@@ -7,7 +7,7 @@ namespace blackjackTests
     public class DeckTests
     {
         [Test]
-        public void InitialiseDeckStartsWith52Cards()
+        public void StartsWith52Cards()
         {
             var deck = new Deck();
             Assert.AreEqual(52, deck.CardsLeft());
