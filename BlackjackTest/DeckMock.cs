@@ -31,10 +31,10 @@ namespace blackjackTests
             return _testCards.Count;
         }
 
-        public int CardsTakenFromDeck
+        private int CardsTakenFromDeck
         {
             get;
-            private set;
+            set;
         } = 0;
 
         

@@ -2,7 +2,7 @@ using System;
 
 namespace kata_blackjack
 {
-    internal class ConsoleInputOutput : IInputOutput
+    public class ConsoleInputOutput : IInputOutput
     {
         public string AskQuestion(string question)
         {

@@ -6,8 +6,7 @@ namespace kata_blackjack
 {
     public abstract class Player
     {
-        private readonly ICollection<Card> Hand = new List<Card>(); //playerhand property can be anything that 
-        //conforms to collection interface. And collection has to be collection of cards
+        private readonly ICollection<Card> _hand = new List<Card>(); 
         private readonly IDeck _deck;
 
         private int _value;
@@ -32,15 +31,15 @@ namespace kata_blackjack
         protected virtual void DrawCard()
         {
             var playerCard = _deck.DrawCard();
-            Hand.Add(playerCard);
+            _hand.Add(playerCard);
             
         }
         
         
         public int HandValue()
         {
-            _value = Hand.Sum(card => card.ValueOfCardFace);
-            if (Hand.Any(card => card.CardFace == CardFace.Ace) && _value <= 11) 
+            _value = _hand.Sum(card => card.ValueOfCardFace);
+            if (_hand.Any(card => card.CardFace == CardFace.Ace) && _value <= 11) 
             {
                 return _value + 10;
             }
@@ -52,7 +51,7 @@ namespace kata_blackjack
         public string PrintPlayerHand()
         {
             var returnString = string.Empty;
-            foreach (var card in Hand)
+            foreach (var card in _hand)
             {
                 returnString += card.CardFace + " " + card.Suit + " ";
             }

@@ -1,4 +1,4 @@
-using blackjackTests;
+
 using kata_blackjack;
 
 namespace blackjackTests
@@ -6,7 +6,6 @@ namespace blackjackTests
     public class PlayerSpy : Player
     {
         public int NumberOfTimesTurnPlayed { get; private set; }
-        public int CardsTakenFromDeck { get; private set; }
         private int _hitTimes;
 
         public PlayerSpy(IDeck deck, int hitTimes) : base(deck)
@@ -67,7 +66,7 @@ namespace blackjackTests
 
 public class DealerSpy : Soft17Player
     {
-        private IDeck _spyDeck;
+        private readonly IDeck _spyDeck;
         public int CardsLeftInDeckBeforeTurn; 
 
         public DealerSpy(IDeck deck) : base(deck)
