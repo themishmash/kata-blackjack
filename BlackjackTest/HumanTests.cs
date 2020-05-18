@@ -22,8 +22,7 @@ namespace blackjackTests
             var testQuestionResponse = new TestResponder(StayInput);
             var human = new Human(testDeck, testQuestionResponse);
             human.NewHand();
-           
-            
+
             //When
 
             //Then
@@ -120,7 +119,7 @@ namespace blackjackTests
             {
                 HitInput,
                StayInput, 
-            }); //put in () "0"
+            }); 
             var human = new Human(testDeck, testQuestionResponse);
             
             human.NewHand();
@@ -129,31 +128,5 @@ namespace blackjackTests
             Assert.AreEqual(18, human.HandValue());
         }
         
-        
-        //should this move?
-        [Test]
-        public void AceCanBeEleven()
-        {
-            var testDeck = new DeckMock(new[]
-            {
-                new Card(CardFace.Six, Suit.Clubs), 
-                new Card(CardFace.Ace, Suit.Diamonds),
-                new Card(CardFace.Two, Suit.Clubs),
-                new Card(CardFace.Ace, Suit.Clubs), 
-                new Card(CardFace.Five, Suit.Clubs), 
-            });
-            var testQuestionResponse = new TestResponder( new[]
-            {
-                HitInput,
-                HitInput,
-                StayInput, 
-            });
-            var human = new Human(testDeck, testQuestionResponse);
-            
-            human.NewHand();
-            human.PlayTurn();
-
-            Assert.AreEqual(20, human.HandValue());
-        }
     }
 }

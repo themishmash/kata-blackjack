@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using kata_blackjack;
-using NUnit.Framework;
+
 
 namespace blackjackTests
 {
@@ -33,7 +31,6 @@ namespace blackjackTests
         
         public void Output(string message)
         {
-            return;
         }
 
 

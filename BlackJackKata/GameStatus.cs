@@ -6,6 +6,7 @@ namespace kata_blackjack
         Busted,
         Lost,
         Playing,
+        Staying,
         Won
     }
 }
